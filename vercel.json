@@ -1,32 +1,34 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": ".",
   "installCommand": "npm ci",
-  "framework": "express",
   "routes": [
     {
       "src": "/css/(.*)",
-      "dest": "/css/$1"
+      "methods": ["GET"],
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      },
+      "continue": true
     },
     {
       "src": "/js/(.*)",
-      "dest": "/js/$1"
+      "methods": ["GET"],
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      },
+      "continue": true
     },
     {
       "src": "/images/(.*)",
-      "dest": "/images/$1"
-    },
-    {
-      "src": "/pages/(.*)",
-      "dest": "/pages/$1"
-    },
-    {
-      "src": "/(.+\\.html?)$",
-      "dest": "/$1"
+      "methods": ["GET"],
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      },
+      "continue": true
     },
     {
       "src": "/(.*)",
-      "dest": "/server.js"
+      "dest": "/api"
     }
   ]
 }
