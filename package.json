@@ -1,9 +1,12 @@
 {
-  "name": "imi-eduplay",
+  "name": "mimi-games",
   "version": "1.0.0",
-  "private": true,
+  "main": "server.js",
   "scripts": {
+    "build": "echo build ishladi",
     "start": "node server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "node server.js"
   },
   "engines": {
