@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="O‘yin turi va fan tanlash — IMI EduPlay tanlash menyusi." />
+  <meta name="theme-color" content="#2563eb" />
+  <title>IMI EduPlay | Menyu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand">
+        <span class="brand-mark">IMI</span>
+        <span class="brand-text">EduPlay</span>
+      </a>
+
+      <nav class="nav">
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="games.html">O‘yinlar</a>
+        <a href="chatgpt.html">ChatGPT</a>
+        <a href="../index.html#pricing">Tariflar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="page-hero">
+          <p class="section-label">Tanlash menyusi</p>
+          <h1>Avval o‘yin turini, keyin fanlarni tanlang</h1>
+          <p>
+            Foydalanuvchi avval o‘yin turini tanlaydi. Keyin shu o‘yinga mos
+            fanlar chiqadi. Tarifga qarab ayrim imkoniyatlar yopiq bo‘ladi.
+          </p>
+        </div>
+
+        <div class="current-plan-banner">
+          <span class="plan-badge">Joriy tarif</span>
+          <h3 id="menuCurrentPlan">Standart</h3>
+          <p>Tarif oshgani sari ko‘proq o‘yin va fanlar ochiladi.</p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-item active-step" id="stepOne">1-qadam: O‘yin turini tanlang</div>
+          <div class="step-item" id="stepTwo">2-qadam: Fan tanlang</div>
+        </div>
+       
+<div id="gamesStep" class="menu-grid active-grid"></div>
+<div id="subjectsStep" class="menu-grid"></div>
+
+<div id="selectionResult" class="result-card hidden">
+  <h3>Tanlov tayyor</h3>
+  <p><strong>O‘yin turi:</strong> <span id="selectedGameType"></span></p>
+  <p><strong>Fan:</strong> <span id="selectedSubject"></span></p>
+  <a href="arqon-tortish.html" class="btn btn-primary" style="margin-top: 14px;">Arqon tortish o‘yiniga o‘tish</a>
+</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const userPurchasedPlan = "standard";
+    // free / standard / premium
+
+    const planLabels = {
+      free: "Boshlang‘ich",
+      standard: "Standart",
+      premium: "Premium"
+    };
+
+    const planOrder = {
+      free: 1,
+      standard: 2,
+      premium: 3
+    };
+
+    const gameTypeData = [
+      {
+        title: "Quiz",
+        desc: "Qisqa va tezkor savol-javob o‘yini.",
+        gradient: "blue-card",
+        requiredPlan: "free"
+      },
+      {
+        title: "Test",
+        desc: "Variantli savollar bilan klassik format.",
+        gradient: "orange-card",
+        requiredPlan: "free"
+      },
+      {
+        title: "Tezkor savol-javob",
+        desc: "Vaqtga bog‘liq tez javob berish formati.",
+        gradient: "green-card",
+        requiredPlan: "standard"
+      },
+      {
+        title: "Mantiqiy topshiriq",
+        desc: "Fikrlash va tahlil qilishga mo‘ljallangan o‘yin.",
+        gradient: "purple-card",
+        requiredPlan: "standard"
+      },
+      {
+        title: "Rasmli savol",
+        desc: "Rasm asosida topish va tahlil qilish formati.",
+        gradient: "cyan-card",
+        requiredPlan: "premium"
+      },
+      {
+        title: "Bosqichli musobaqa",
+        desc: "Bir necha darajali va murakkab o‘yin rejimi.",
+        gradient: "red-card",
+        requiredPlan: "premium"
+      }
+    ];
+
+    const subjectData = [
+      {
+        title: "Matematika",
+        desc: "Hisoblash, algebra va mantiqiy topshiriqlar.",
+        gradient: "blue-card",
+        requiredPlan: "free"
+      },
+      {
+        title: "Ingliz tili",
+        desc: "Grammar, vocabulary va test mashqlari.",
+        gradient: "orange-card",
+        requiredPlan: "free"
+      },
+      {
+        title: "Ona tili",
+        desc: "Grammatika, gap bo‘laklari va qoidalar.",
+        gradient: "green-card",
+        requiredPlan: "free"
+      },
+      {
+        title: "Adabiyot",
+        desc: "Asarlar, shoirlar va qiziqarli savollar.",
+        gradient: "purple-card",
+        requiredPlan: "free"
+      },
+      {
+        title: "Tarix",
+        desc: "Tarixiy voqealar, sanalar va shaxslar.",
+        gradient: "red-card",
+        requiredPlan: "standard"
+      },
+      {
+        title: "Biologiya",
+        desc: "Tirik organizmlar va hayot jarayonlari.",
+        gradient: "lime-card",
+        requiredPlan: "standard"
+      },
+      {
+        title: "Geografiya",
+        desc: "Davlatlar, xaritalar va tabiiy hodisalar.",
+        gradient: "cyan-card",
+        requiredPlan: "standard"
+      },
+      {
+        title: "Rus tili",
+        desc: "So‘z boyligi, grammatika va mashqlar.",
+        gradient: "blue-card",
+        requiredPlan: "standard"
+      },
+      {
+        title: "Kimyo",
+        desc: "Moddalar, reaksiyalar va formulalar.",
+        gradient: "green-card",
+        requiredPlan: "premium"
+      },
+      {
+        title: "Fizika",
+        desc: "Kuch, tezlik, energiya va qonunlar.",
+        gradient: "purple-card",
+        requiredPlan: "premium"
+      }
+    ];
+
+    let chosenGameType = "";
+    let chosenSubject = "";
+
+    function showToast(message) {
+      const oldToast = document.querySelector(".toast");
+      if (oldToast) oldToast.remove();
+
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => toast.classList.add("show"), 50);
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+      }, 2500);
+    }
+
+    function createCard(item, type) {
+      const locked = planOrder[item.requiredPlan] > planOrder[userPurchasedPlan];
+
+      const card = document.createElement("div");
+      card.className = `select-card ${item.gradient} ${locked ? "locked-card-ui" : ""}`;
+
+      card.innerHTML = `
+        <div class="select-card-top">
+          <span class="mini-icon">${locked ? "🔒" : "★"}</span>
+          <span class="mini-plan">${planLabels[item.requiredPlan]}</span>
+        </div>
+        <h3>${item.title}</h3>
+        <p>${item.desc}</p>
+        <button class="select-card-btn">${locked ? "Yopiq" : "Tanlash"}</button>
+      `;
+
+      card.addEventListener("click", () => {
+        if (locked) {
+          showToast(`Bu bo‘lim ${planLabels[item.requiredPlan]} tarifida ochiladi.`);
+          return;
+        }
+
+        if (type === "game") {
+          chosenGameType = item.title;
+          document.getElementById("gamesStep").classList.remove("active-grid");
+          document.getElementById("subjectsStep").classList.add("active-grid");
+          document.getElementById("stepOne").classList.remove("active-step");
+          document.getElementById("stepTwo").classList.add("active-step");
+          showToast(`${item.title} tanlandi. Endi fan tanlang.`);
+        }
+
+        if (type === "subject") {
+          chosenSubject = item.title;
+          document.getElementById("selectedGameType").textContent = chosenGameType;
+          document.getElementById("selectedSubject").textContent = chosenSubject;
+          document.getElementById("selectionResult").classList.remove("hidden");
+          showToast(`${item.title} tanlandi.`);
+          const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          window.scrollTo({
+            top: document.getElementById("selectionResult").offsetTop - 120,
+            behavior: reduceMotion ? "auto" : "smooth"
+          });
+        }
+      });
+
+      return card;
+    }
+
+    function renderGrid(gridId, data, type) {
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = "";
+      data.forEach(item => {
+        grid.appendChild(createCard(item, type));
+      });
+    }
+
+    document.getElementById("menuCurrentPlan").textContent = planLabels[userPurchasedPlan];
+
+    renderGrid("gamesStep", gameTypeData, "game");
+    renderGrid("subjectsStep", subjectData, "subject");
+  </script>
+</body>
+</html>

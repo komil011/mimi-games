@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Arqon tortish — jamoaviy savol-javob o‘yini. Fan tanlang va bellashing." />
+  <meta name="theme-color" content="#2563eb" />
+  <title>IMI EduPlay | Arqon tortish</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand">
+        <span class="brand-mark">IMI</span>
+        <span class="brand-text">EduPlay</span>
+      </a>
+
+      <nav class="nav">
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="games.html">O‘yinlar</a>
+        <a href="chatgpt.html">ChatGPT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="tug-main">
+    <!-- 1 -->
+    <section class="tug-screen active-screen" id="introScreen">
+      <div class="container">
+        <div class="tug-hero">
+          <div class="tug-hero-left">
+            <p class="section-label">Arqon tortish o‘yini</p>
+            <h1>Tezkor savol-javob orqali jamoaviy bellashuv</h1>
+            <p>
+              Ikki jamoa bir-biriga qarshi o‘ynaydi. Kim tez va to‘g‘ri javob
+              bersa, arqon o‘sha tomonga tortiladi.
+            </p>
+
+            <div class="tug-hero-buttons">
+              <button class="btn btn-primary" id="startTugGameBtn">O‘yinni boshlash</button>
+              <a href="games.html" class="btn btn-secondary">Orqaga qaytish</a>
+            </div>
+          </div>
+
+          <div class="tug-hero-right">
+            <div class="mini-status-card">
+              <h3>O‘yin tartibi</h3>
+              <ul>
+                <li>Fan tanlash</li>
+                <li>2 ta jamoa nomini kiritish</li>
+                <li>Musiqa bilan yoki musiqasiz boshlash</li>
+                <li>30 ochkoga birinchi yetgan jamoa g‘olib bo‘ladi</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="tug-screen" id="subjectScreen">
+      <div class="container">
+        <div class="page-hero">
+          <p class="section-label">1-qadam</p>
+          <h1>Fan tanlang</h1>
+          <p>Avval Arqon tortish o‘yini qaysi fan bo‘yicha bo‘lishini tanlang.</p>
+        </div>
+
+        <div class="subject-grid">
+          <div class="subject-card selected-subject" data-subject="Ona tili">
+            <h3>Ona tili</h3>
+            <p>So‘z turkumlari, gap tuzilishi va grammatika savollari.</p>
+          </div>
+
+          <div class="subject-card" data-subject="Matematika">
+            <h3>Matematika</h3>
+            <p>Hisoblash, mantiq, algebra va tezkor savollar.</p>
+          </div>
+
+          <div class="subject-card" data-subject="Ingliz tili">
+            <h3>Ingliz tili</h3>
+            <p>Grammar, vocabulary va oddiy testlar.</p>
+          </div>
+
+          <div class="subject-card" data-subject="Tarix">
+            <h3>Tarix</h3>
+            <p>Sanalar, voqealar va tarixiy shaxslar bo‘yicha savollar.</p>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn btn-primary" id="toTeamsBtn">Davom etish</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="tug-screen" id="teamsScreen">
+      <div class="container">
+        <div class="page-hero">
+          <p class="section-label">2-qadam</p>
+          <h1>Jamoalarni tayyorlang</h1>
+          <p>Ko‘k va Qizil jamoa nomlarini kiriting.</p>
+        </div>
+
+        <div class="teams-setup-card">
+          <div class="team-box blue-team-box">
+            <h3>1-jamoa (Ko‘k)</h3>
+            <input type="text" id="blueTeamName" placeholder="Masalan: Zukkolar" />
+          </div>
+
+          <div class="vs-text">VS</div>
+
+          <div class="team-box red-team-box">
+            <h3>2-jamoa (Qizil)</h3>
+            <input type="text" id="redTeamName" placeholder="Masalan: G‘oliblar" />
+          </div>
+        </div>
+
+        <div class="start-mode-box">
+          <h3>O‘yinni qanday boshlaysiz?</h3>
+          <div class="start-mode-buttons">
+            <button class="btn btn-primary" id="startWithMusicBtn">O‘yinni musiqa bilan boshlang</button>
+            <button class="btn btn-secondary" id="startWithoutMusicBtn">O‘yinni musiqasiz boshlang</button>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn btn-secondary" id="backToSubjectsBtn">Orqaga</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="tug-screen" id="countdownScreen">
+      <div class="container">
+        <div class="countdown-box">
+          <p class="section-label">Tayyorlaning</p>
+          <h1 id="countdownNumber">3</h1>
+          <p>O‘yin boshlanishiga oz qoldi...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section class="tug-screen" id="gameScreen">
+      <div class="container">
+        <div class="game-top-info">
+          <h1 id="gameTitle">ARQON TORTISH: ONA TILI</h1>
+          <p>
+            Kim birinchi bo‘lib 30 ochkoga yetsa, g‘olib bo‘ladi.
+            Har 10 ochkida savollar qiyinlashadi.
+          </p>
+        </div>
+
+        <div class="score-bar">
+          <div class="team-score blue-side">
+            <span id="blueTeamLabel">Ko‘k</span>
+            <strong id="blueScore">0</strong>
+          </div>
+
+          <div class="center-timer">
+            <span>🏆</span>
+            <strong>30 ochko</strong>
+          </div>
+
+          <div class="team-score red-side">
+            <span id="redTeamLabel">Qizil</span>
+            <strong id="redScore">0</strong>
+          </div>
+        </div>
+
+        <div class="tug-war-layout">
+          <div class="question-panel blue-question-panel">
+            <h3 id="blueQuestionTitle">Savol...</h3>
+            <div class="answers-list" id="blueAnswers"></div>
+          </div>
+
+          <div class="rope-stage">
+            <div class="rope-stage-inner">
+              <div class="rope-center-line"></div>
+
+              <div class="rope-world" id="ropeWorld">
+                <div class="team-puller team-puller-left">
+                  <div class="puller-head"></div>
+                  <div class="puller-body"></div>
+                  <div class="puller-arm"></div>
+                  <div class="puller-leg puller-leg-left"></div>
+                  <div class="puller-leg puller-leg-right"></div>
+                </div>
+
+                <div class="rope-line" id="ropeLine">
+                  <div class="rope-marker" id="ropeMarker"></div>
+                </div>
+
+                <div class="team-puller team-puller-right">
+                  <div class="puller-head"></div>
+                  <div class="puller-body"></div>
+                  <div class="puller-arm"></div>
+                  <div class="puller-leg puller-leg-left"></div>
+                  <div class="puller-leg puller-leg-right"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="question-panel red-question-panel">
+            <h3 id="redQuestionTitle">Savol...</h3>
+            <div class="answers-list" id="redAnswers"></div>
+          </div>
+        </div>
+
+        <div class="music-floating-panel">
+          <button class="music-control-btn" id="prevTrackBtn">⏮</button>
+          <button class="music-control-btn" id="toggleMusicBtn">⏸</button>
+          <button class="music-control-btn" id="nextTrackBtn">⏭</button>
+          <div class="music-track-name" id="trackName">Musiqa yoqilmagan</div>
+        </div>
+
+        <div class="game-bottom-actions">
+          <button class="btn btn-secondary" id="restartGameBtn">Qayta boshlash</button>
+        </div>
+      </div>
+    </section>
+
+    <div id="fireworksContainer"></div>
+
+    <audio id="gameMusic" preload="none"></audio>
+  </main>
+
+  <script src="../js/arqon-tortish.js" defer></script>
+</body>
+</html>
