@@ -1,5 +1,12 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": ".",
+  "installCommand": "npm ci",
+  "framework": "express",
   "routes": [
-    { "src": "/", "dest": "/index.html" }
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
   ]
 }

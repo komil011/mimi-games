@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "build": "echo build ishladi",
+    "build": "npm run build:prepare",
+    "build:prepare": "echo 'Build preparation complete'",
     "start": "node server.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "vercel-build": "echo 'Vercel build complete'"
   },
   "engines": {
     "node": ">=18"
